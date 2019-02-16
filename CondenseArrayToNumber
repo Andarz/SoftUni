@@ -1,0 +1,29 @@
+package ArraysLab;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class CondenseArrayToNumber {
+    public static void main(String[] args) {
+        Scanner keys = new Scanner(System.in);
+
+        int[] nums = Arrays.stream(keys.nextLine().split(" "))
+                .mapToInt(Integer::parseInt).toArray();
+        int[] condensed = new int[nums.length - 1];
+
+        if (nums.length > 1) {
+
+            for (int i = 0; i < nums.length; i++) {
+                for (int j = 0; j < condensed.length - i; j++) {
+                    condensed[j] = nums[j] + nums[j + 1];
+
+                }
+                nums = condensed;
+
+            }
+            System.out.println(condensed[0]);
+        }else{
+            System.out.println(nums[0]);
+        }
+    }
+}
